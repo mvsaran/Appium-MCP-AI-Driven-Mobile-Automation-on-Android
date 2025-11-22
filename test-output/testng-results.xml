@@ -2,38 +2,38 @@
 <testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-09T15:58:29 IST" name="SwagLabsTestSuite" finished-at="2025-07-09T15:59:22 IST" duration-ms="53345">
+  <suite started-at="2025-07-09T18:38:50 IST" name="SwagLabsTestSuite" finished-at="2025-07-09T18:39:20 IST" duration-ms="30100">
     <groups>
     </groups>
-    <test started-at="2025-07-09T15:58:29 IST" name="SwagLabs Tests" finished-at="2025-07-09T15:59:22 IST" duration-ms="53345">
+    <test started-at="2025-07-09T18:38:50 IST" name="SwagLabs Tests" finished-at="2025-07-09T18:39:20 IST" duration-ms="30100">
       <class name="tests.LoginTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.LoginTest@e3b3b2f]" started-at="2025-07-09T15:58:29 IST" name="setup" finished-at="2025-07-09T15:58:49 IST" duration-ms="19885" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.LoginTest@e3b3b2f]" started-at="2025-07-09T18:38:50 IST" name="setup" finished-at="2025-07-09T18:38:57 IST" duration-ms="6989" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="swaglabsLoginTest()[pri:0, instance:tests.LoginTest@e3b3b2f]" started-at="2025-07-09T15:58:49 IST" name="swaglabsLoginTest" description="Verify successful login with valid credentials" finished-at="2025-07-09T15:58:57 IST" duration-ms="8673" status="PASS">
+        <test-method signature="swaglabsLoginTest()[pri:0, instance:tests.LoginTest@e3b3b2f]" started-at="2025-07-09T18:38:57 IST" name="swaglabsLoginTest" description="Verify successful login with valid credentials" finished-at="2025-07-09T18:39:03 IST" duration-ms="5360" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- swaglabsLoginTest -->
-        <test-method is-config="true" signature="tearDownAppium()[pri:0, instance:tests.LoginTest@e3b3b2f]" started-at="2025-07-09T15:59:20 IST" name="tearDownAppium" finished-at="2025-07-09T15:59:22 IST" duration-ms="1500" status="PASS">
+        <test-method is-config="true" signature="tearDownAppium()[pri:0, instance:tests.LoginTest@e3b3b2f]" started-at="2025-07-09T18:39:20 IST" name="tearDownAppium" finished-at="2025-07-09T18:39:20 IST" duration-ms="527" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownAppium -->
       </class> <!-- tests.LoginTest -->
       <class name="tests.CheckOutTest">
-        <test-method signature="checkOutTest()[pri:0, instance:tests.CheckOutTest@6bb4dd34]" started-at="2025-07-09T15:59:04 IST" name="checkOutTest" description="Verify checkout with valid information" finished-at="2025-07-09T15:59:17 IST" depends-on-methods="productPageTest" duration-ms="12444" status="PASS">
+        <test-method signature="checkOutTest()[pri:0, instance:tests.CheckOutTest@6bb4dd34]" started-at="2025-07-09T18:39:07 IST" name="checkOutTest" description="Verify checkout with valid information" finished-at="2025-07-09T18:39:17 IST" depends-on-methods="productPageTest" duration-ms="10366" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkOutTest -->
       </class> <!-- tests.CheckOutTest -->
       <class name="tests.ProductTest">
-        <test-method signature="productPageTest()[pri:0, instance:tests.ProductTest@2ad48653]" started-at="2025-07-09T15:58:57 IST" name="productPageTest" description="Verify adding a product to cart" finished-at="2025-07-09T15:59:04 IST" depends-on-methods="swaglabsLoginTest" duration-ms="7083" status="PASS">
+        <test-method signature="productPageTest()[pri:0, instance:tests.ProductTest@2ad48653]" started-at="2025-07-09T18:39:03 IST" name="productPageTest" description="Verify adding a product to cart" finished-at="2025-07-09T18:39:07 IST" depends-on-methods="swaglabsLoginTest" duration-ms="4306" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- productPageTest -->
       </class> <!-- tests.ProductTest -->
       <class name="tests.LogoutTest">
-        <test-method signature="logoutTest()[pri:0, instance:tests.LogoutTest@7d9f158f]" started-at="2025-07-09T15:59:17 IST" name="logoutTest" description="Verify logout flow after checkout" finished-at="2025-07-09T15:59:20 IST" depends-on-methods="checkOutTest" duration-ms="3526" status="PASS">
+        <test-method signature="logoutTest()[pri:0, instance:tests.LogoutTest@7d9f158f]" started-at="2025-07-09T18:39:17 IST" name="logoutTest" description="Verify logout flow after checkout" finished-at="2025-07-09T18:39:20 IST" depends-on-methods="checkOutTest" duration-ms="2442" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logoutTest -->

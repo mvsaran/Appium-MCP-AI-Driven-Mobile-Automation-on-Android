@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "appium-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@gavrix/appium-mcp"],
+      "env": {
+        "CAPABILITIES_CONFIG": "${workspaceFolder}/mcp-server/capabilities.json",
+        "ANDROID_HOME": "${env:ANDROID_HOME}"
+      }
+    }
+  }
+}

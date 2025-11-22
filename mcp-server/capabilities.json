@@ -1,0 +1,29 @@
+{
+  "android": {
+    "platformName": "Android",
+    "appium:deviceName": "emulator-5554",
+    "appium:automationName": "UiAutomator2",
+    "appium:app": "C:\\apkfiles\\AndroidUI.apk",
+    "appium:appPackage": "com.swaglabsmobileapp",
+    "appium:appActivity": "com.swaglabsmobileapp.MainActivity",
+    "appium:noReset": true
+  },
+ "androidBrowser": {
+  "platformName": "Android",
+  "appium:deviceName": "emulator-5554",
+  "appium:automationName": "UiAutomator2",
+  "appium:browserName": "Chrome",
+  "appium:noReset": true,
+  "appium:chromeOptions": {
+    "args": [
+      "--disable-fre", 
+      "--no-first-run",
+      "--disable-popup-blocking",
+      "--disable-default-apps",
+      "--disable-infobars",
+      "--disable-notifications"
+    ]
+  }
+}
+
+}
