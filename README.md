@@ -51,8 +51,6 @@ Appium + Model Context Protocol (MCP) + GitHub Copilot = an AI-assisted mobile a
 
 The MCP server intelligently discovers and maps UI elements from your Android app:
 
-![Element Discovery](attachment://image_1)
-
 *AI automatically identifies login fields, buttons, product cards, and checkout elements with stable content-desc locators*
 
 ---
@@ -61,8 +59,6 @@ The MCP server intelligently discovers and maps UI elements from your Android ap
 
 Execute complex browser workflows with natural language commands:
 
-![Browser Automation](attachment://image_2)
-
 *Search Google, verify results, and capture locators - all through conversational AI prompts*
 
 ---
@@ -70,8 +66,6 @@ Execute complex browser workflows with natural language commands:
 ### ✅ End-to-End Test Execution
 
 Watch AI complete entire test flows from login to checkout:
-
-![Checkout Complete](attachment://image_3)
 
 *AI navigates the Swag Labs app, adds items to cart, and completes checkout - then generates the test code*
 
