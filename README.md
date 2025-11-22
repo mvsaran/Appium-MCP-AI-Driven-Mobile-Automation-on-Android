@@ -445,58 +445,228 @@ AppiumProject/
 
 ---
 
-## 💡 Usage Examples
+## 💡 Usage Examples & Prompts
 
-### Example 1: Swag Labs E2E Flow
+### 🌐 Example 1: Chrome Google Search (Browser Testing)
 
-```text
-Use the "android" capabilities from capabilities.json.
-
-Steps:
-1. Start a new Android session
-2. On login screen, enter "standard_user" and "secret_sauce"
-3. Tap Login button
-4. Add "Sauce Labs Backpack" and "Sauce Labs Bike Light" to cart
-5. Open cart and verify 2 items
-6. Proceed through checkout with test data:
-   - First: John
-   - Last: Doe
-   - Zip: 12345
-7. Complete order
-8. Verify "CHECKOUT: COMPLETE!" message
-9. Return all locators used (content-desc preferred)
-```
-
-### Example 2: Chrome Google Search
+**Copy and paste this prompt into Copilot Chat:**
 
 ```text
-Use the "androidBrowser" capabilities.
+Use the appium-mcp tools with the "androidBrowser" capabilities.
 
 Steps:
-1. Create browser session
+1. Create a new session
 2. Navigate to https://www.google.com
-3. Find search box (input[name="q"])
-4. Type "Appium automation" and submit
-5. Wait for results
-6. Assert at least one result contains "Appium"
-7. Return CSS/XPath locators used
+3. Locate the search box and type: Appium automation
+4. Submit the search (tap enter or search button)
+5. Verify at least one search result contains the word "Appium"
+6. Return the locators used and a boolean result
+
+Do not generate Java code yet — just perform the actions.
 ```
 
-### Example 3: Generate Test Code
+**Expected Output:**
+- Session created with Chrome browser
+- Navigation to Google completed
+- Search executed successfully
+- Results verified
+- Locators returned (e.g., `input[name="q"]`, CSS selectors)
+
+---
+
+### 📱 Example 2: Swag Labs - Full Exploration & Test Plan Design
+
+**Copy and paste this comprehensive prompt into Copilot Chat:**
 
 ```text
-Based on the Swag Labs flow we just executed:
+Use the appium-mcp tools with my existing Android Swag Labs capabilities from mcp-server/capabilities.json (the android profile) to explore the Swag Labs mobile app and design a full automation plan.
 
-1. Generate a Java TestNG test class
-2. Use my BaseClass.java for setup
-3. Create Page Objects for:
+Goal: Open the Swag Labs app, perform a full cart checkout flow, and then propose how to implement it in Java + TestNG with Page Object Model. Do not generate any Java code yet – only describe steps, structure, and test plan.
+
+Part 1 – Explore & document the app flow (using tools)
+
+1. Start a new Android Appium session using the android capabilities.
+
+2. On the Login screen, identify reliable locators for:
+   - Username field
+   - Password field
+   - Login button
+
+3. Log in with standard_user / secret_sauce.
+
+4. On the Products screen, identify locators for:
+   - Page title ("PRODUCTS" or equivalent)
+   - Product items (name, price, add-to-cart button for at least 2 items)
+   - Cart icon / cart badge
+
+5. Add at least two items to the cart, then navigate to the Cart screen and capture locators for:
+   - Cart item rows (name, price)
+   - Remove button
+   - Checkout button
+
+6. Proceed to Checkout (Your Information) screen and identify locators for:
+   - First name, Last name, Postal code fields
+   - Continue button
+
+7. Proceed to Checkout Overview screen and capture:
+   - Line items and their prices
+   - Subtotal / Tax / Total labels and values
+   - Finish button
+
+8. On the Checkout Complete screen, identify:
+   - Confirmation message
+   - Back Home button
+
+For each screen, return:
+- Screen name
+- Key elements and their locators (id/accessibilityId/xpath)
+- Any navigation assumptions (e.g., expected previous state)
+
+Part 2 – Propose POM structure (no code, just design)
+
+Based on what you found, propose a Page Object Model for my Java project.
+
+Suggest page classes under package Pages, for example:
+- LoginPage
+- ProductsPage
+- CartPage
+- CheckoutInformationPage
+- CheckoutOverviewPage
+- CheckoutCompletePage
+
+For each page, list:
+- The main fields and actions it should expose (method names, e.g., login(username, password), addProductToCart(String productName), goToCart(), completeCheckout(...), etc.)
+- Which locators (from Part 1) each method would use
+- Assume I already have a BaseClass that manages driver setup/teardown; explain how each page will receive and use the driver
+
+Part 3 – Propose TestNG test structure (still no code)
+
+Design the TestNG test classes and test methods for a Swag Labs E2E cart checkout flow.
+
+Suggest class and method names under package tests, for example:
+- LoginTest
+- CartCheckoutTest
+- LogoutTest
+
+For each test method, outline the exact high-level steps it will perform using the POM methods (e.g., "call loginPage.login(...) → productsPage.addProductToCart(...) → cartPage.verifyItems(...) → …").
+
+Identify which assertions should be made at each stage, such as:
+- Successful login (Products page visible)
+- Correct items and prices in cart
+- Correct totals (subtotal vs sum of items)
+- Successful checkout completion message
+
+Mention how TestNG groups (e.g., @Test(groups = {"smoke"}), {"regression"}) could be organized for these tests.
+
+Part 4 – Full test plan summary
+
+Finally, summarize the overall test plan for Swag Labs mobile E2E using Appium + Java + TestNG + POM:
+- Scope of coverage for the cart checkout flow
+- Additional scenarios to add later (negative login, remove item from cart, failed payment edge cases, etc.)
+- Any risks or flakiness you foresee (locators, timing, network) and how you recommend handling them
+
+Important: In this answer, do not output any Java code. Only describe the locators you used, the POM design, the TestNG test structure, and the test plan in detail. I will ask for concrete Java code later.
+```
+
+**Expected Output:**
+- Complete exploration of all Swag Labs screens
+- Detailed locator mapping for every element
+- POM architecture design (6 page classes)
+- TestNG test structure proposal
+- Comprehensive test plan with risk assessment
+
+---
+
+### 🔄 Example 3: Generate Test Code (After Exploration)
+
+**After running Example 2, use this prompt:**
+
+```text
+Based on the Swag Labs exploration we just completed:
+
+1. Generate a complete Java TestNG test class for the cart checkout flow
+2. Use my BaseClass.java for driver setup/teardown
+3. Implement all Page Object classes you proposed:
    - LoginPage
    - ProductsPage
    - CartPage
    - CheckoutInformationPage
+   - CheckoutOverviewPage
    - CheckoutCompletePage
-4. Follow POM best practices
-5. Add assertions for each step
+4. Follow POM best practices:
+   - PageFactory with @FindBy annotations
+   - Separate locators from actions
+   - Reusable methods
+5. Add proper assertions at each step
+6. Include TestNG annotations and groups
+7. Add proper waits (WebDriverWait)
+
+Generate the complete code now.
+```
+
+---
+
+### 🔍 Example 4: Element Discovery & Analysis
+
+```text
+Use the appium-mcp tools with the "android" capabilities.
+
+1. Start a new session on the current screen
+2. Dump the entire UI hierarchy
+3. For each clickable element, show:
+   - resource-id
+   - content-desc
+   - text attribute
+   - bounds/coordinates
+   - clickable status
+4. Suggest which locator strategy is most stable for each element
+5. Identify any elements that might cause flakiness
+
+Do not generate code - just provide the analysis.
+```
+
+---
+
+### 📊 Example 5: Data-Driven Testing Setup
+
+```text
+Use the appium-mcp tools to help design a data-driven login test.
+
+1. Explore the login screen locators
+2. Propose a TestNG DataProvider structure with multiple test users:
+   - standard_user (valid)
+   - locked_out_user (should fail)
+   - problem_user (valid but may have issues)
+   - performance_glitch_user (valid)
+3. Design the test method signature
+4. Describe expected behavior for each user type
+5. Suggest assertions for each scenario
+
+Then generate the complete Java code with DataProvider.
+```
+
+---
+
+### 🎯 Quick Testing Prompts
+
+#### Start a Browser Session
+```text
+Use appium-mcp with "androidBrowser" to open Chrome and navigate to https://appium.io. Return the page title.
+```
+
+#### Take Screenshot
+```text
+Use appium-mcp with "android" to take a screenshot of the current screen and save it.
+```
+
+#### Check App State
+```text
+Use appium-mcp to check if Swag Labs app is running. If not, launch it and return to login screen.
+```
+
+#### Verify Element Exists
+```text
+Use appium-mcp to verify the login button exists on screen. Return its content-desc and resource-id.
 ```
 
 ---
@@ -989,7 +1159,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-### Author
+### 🚀Author
+
 Saran Kumar
 
 Made with ❤️ by the Mobile Automation Community
