@@ -122,47 +122,150 @@ Watch AI complete entire test flows from login to checkout:
 
 ## ✅ Prerequisites
 
-### Required Software
+### 🔧 Required Software
 
-| Tool | Version | Purpose |
-|------|---------|---------|
-| **Java JDK** | 11+ (17 recommended) | TestNG & Appium client |
-| **Node.js** | 18+ | MCP server & Appium |
-| **Android Studio** | Latest | SDK, AVD, Emulator |
-| **Appium** | 3.0+ | Mobile automation server |
-| **VS Code** | Latest | IDE with Copilot & MCP |
+Before starting, ensure you have the following tools installed:
 
-### Install Appium & Driver
+| Tool | Purpose | Installation |
+|------|---------|--------------|
+| ☕ **Java JDK** | Core programming language (11, 17, or 21) | [Download Oracle JDK](https://www.oracle.com/java/technologies/downloads/) / [Download OpenJDK](https://adoptium.net/) |
+| 📦 **Maven** | Build automation & dependency management | [Download Maven](https://maven.apache.org/download.cgi) |
+| 📝 **Node.js** | Runtime for Appium server (18+) | [Download Node.js](https://nodejs.org/) |
+| 📱 **Appium Server** | Mobile test automation server (3.0+) | `npm install -g appium` |
+| 🔧 **Appium UiAutomator2** | Android automation driver | `appium driver install uiautomator2` |
+| 🔍 **Appium Inspector** | Element locator & inspector tool | [Download Appium Inspector](https://github.com/appium/appium-inspector/releases) |
+| 🤖 **Android Studio** | Android SDK & emulator management | [Download Android Studio](https://developer.android.com/studio) |
+| 💻 **VS Code** | IDE with Copilot & MCP support | [Download VS Code](https://code.visualstudio.com/) |
+| 🤖 **GitHub Copilot** | AI code assistant (requires subscription) | [Install Extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) |
+| 📊 **Allure CLI** | Generate interactive test reports | `npm install -g allure-commandline` |
+
+### 📥 Installation Steps
+
+#### 1. Install Java JDK
 
 ```bash
+# Verify Java installation
+java -version
+
+# Expected output:
+# java version "17.0.x" or "11.0.x" or "21.0.x"
+```
+
+#### 2. Install Maven
+
+```bash
+# Verify Maven installation
+mvn -version
+
+# Expected output:
+# Apache Maven 3.x.x
+```
+
+#### 3. Install Node.js & Appium
+
+```bash
+# Verify Node.js
+node -v
+npm -v
+
 # Install Appium globally
 npm install -g appium
 
 # Install UiAutomator2 driver
 appium driver install uiautomator2
 
-# Verify installation
+# Verify Appium installation
 appium -v
+
+# Expected output: 3.x.x
 ```
 
-### Environment Variables (Windows)
+#### 4. Set Up Android Studio
+
+1. **Download & Install** Android Studio from [developer.android.com](https://developer.android.com/studio)
+2. **Install SDK Components:**
+   - Android SDK Platform-Tools
+   - Android SDK Build-Tools
+   - Android Emulator
+   - Android SDK Platform (API 33 or higher)
+
+3. **Create Android Virtual Device (AVD):**
+   - Open Android Studio
+   - Tools → Device Manager → Create Device
+   - Choose device (e.g., Pixel 7)
+   - Select system image (API 33+ recommended)
+   - Finish and start emulator
+
+### 🌍 Environment Variables (Windows)
 
 ```text
 ANDROID_HOME = C:\Users\<YourName>\AppData\Local\Android\Sdk
 JAVA_HOME    = C:\Program Files\Eclipse Adoptium\jdk-17
+MAVEN_HOME   = C:\Program Files\Apache\maven
 
 PATH += %ANDROID_HOME%\platform-tools
         %ANDROID_HOME%\tools
         %ANDROID_HOME%\emulator
+        %JAVA_HOME%\bin
+        %MAVEN_HOME%\bin
 ```
 
-**Verification:**
+### 🍎 Environment Variables (Mac/Linux)
+
+Add to your `~/.bash_profile` or `~/.zshrc`:
 
 ```bash
-adb devices
-java -version
-node -v
-appium -v
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/emulator
+```
+
+Then reload:
+```bash
+source ~/.bash_profile  # or source ~/.zshrc
+```
+
+### ✅ Verification Checklist
+
+Run these commands to verify your setup:
+
+```bash
+# Check Java
+java -version          # Should show version 11, 17, or 21
+
+# Check Maven
+mvn -version           # Should show Apache Maven 3.x
+
+# Check Node.js
+node -v                # Should show v18.x or higher
+npm -v                 # Should show v9.x or higher
+
+# Check Appium
+appium -v              # Should show 3.x or higher
+
+# Check Android SDK
+adb devices            # Should list connected devices/emulators
+
+# Check emulator
+emulator -list-avds    # Should list your virtual devices
+
+# Check Allure (optional)
+allure --version       # Should show allure 2.x
+```
+
+**Expected Output Example:**
+```text
+✅ java version "17.0.9"
+✅ Apache Maven 3.9.5
+✅ v18.18.0
+✅ 9.8.1
+✅ 3.0.1
+✅ List of devices attached
+   emulator-5554    device
+✅ Pixel_7_API_33
+✅ 2.24.0
 ```
 
 ---
@@ -829,18 +932,52 @@ Expected Time: 90 minutes
 - [ ] **MCP Integration** (Server setup, capabilities config)
 - [ ] **AI-Assisted Testing** (Natural language prompts, code generation)
 - [ ] **Page Object Model** (Design patterns, reusability)
-- [ ] **TestNG Framework** (
+- [ ] **TestNG Framework** (Annotations, assertions, data providers)
+- [ ] **CI/CD Integration** (GitHub Actions, Jenkins)
+- [ ] **Reporting** (Allure, ExtentReports)
+- [ ] **Troubleshooting** (Debugging, logs analysis)
+- [ ] **Best Practices** (Code quality, maintainability)
+
+---
+
+### 💬 Get Help & Support
+
+**Stuck? Here's how to get help:**
+
+1. **Check Troubleshooting Section** - Common issues solved
+2. **Review Documentation** - Official guides first
+3. **Search GitHub Issues** - Someone may have faced it
+4. **Ask the Community** - Appium forum, Stack Overflow
+5. **Open an Issue** - Provide logs, screenshots, code
+
+**When asking for help, include:**
+- ✅ Appium version (`appium -v`)
+- ✅ Node.js version (`node -v`)
+- ✅ Device/Emulator details
+- ✅ Complete error message & stack trace
+- ✅ Relevant code snippet
+- ✅ Steps to reproduce
+
+---
+
+## 🤝 Contributing
+
+Contributions welcome! Please:
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+---
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-## Youtube refence
 
-https://www.youtube.com/watch?v=jgwNTCuCk9E&t=78s
-
-----
 ## 🙏 Acknowledgments
 
 - **Appium Team** - Mobile automation framework
@@ -852,11 +989,8 @@ https://www.youtube.com/watch?v=jgwNTCuCk9E&t=78s
 
 <div align="center">
 
-### 🚀 Start Automating with AI Today!
-
-**Have questions?** Open an issue  
-**Want to contribute?** Submit a PR  
-**Need help?** Check our [Wiki](../../wiki)
+### Author
+Saran Kumar
 
 Made with ❤️ by the Mobile Automation Community
 
